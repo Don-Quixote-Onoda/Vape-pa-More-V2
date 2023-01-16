@@ -9,8 +9,16 @@ class ProductType extends Model
 {
     use HasFactory;
 
+    public $table = 'product_types';
+    public $primary_key = 'id';
+    public $timestamp = true;
+
     protected $fillable = [
         'name',
         'type'
     ];
+
+    public function product() {
+        return $this->hasMany(Product::class);
+    }
 }

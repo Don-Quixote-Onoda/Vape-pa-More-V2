@@ -9,6 +9,10 @@ class Order extends Model
 {
     use HasFactory;
 
+    public $table = 'orders';
+    public $primary_key = 'id';
+    public $timestamp = true;
+
     protected $fillable = [
         'product_id',
         'user_id',
@@ -17,4 +21,14 @@ class Order extends Model
         'quatity',
         'total_price'
     ];
+
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    
 }

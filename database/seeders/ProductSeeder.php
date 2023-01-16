@@ -20,7 +20,8 @@ class ProductSeeder extends Seeder
                 'price' => 200.50,
                 'status' => 1,
                 'product_type_id' => 1,
-                'quantity' => 20
+                'quantity' => 20,
+                'is_deleted' => 0
             ]);
 
             Product::create([
@@ -28,7 +29,8 @@ class ProductSeeder extends Seeder
                 'price' => 200.50,
                 'status' => 1,
                 'product_type_id' => 2,
-                'quantity' => 5
+                'quantity' => 5,
+                'is_deleted' => 0
             ]);
 
             Product::create([
@@ -36,7 +38,8 @@ class ProductSeeder extends Seeder
                 'price' => 3000,
                 'status' => 1,
                 'product_type_id' => 4,
-                'quantity' => 1
+                'quantity' => 1,
+                'is_deleted' => 0
             ]);
 
             Product::create([
@@ -44,7 +47,8 @@ class ProductSeeder extends Seeder
                 'price' => 500,
                 'status' => 1,
                 'product_type_id' => 5,
-                'quantity' => 2
+                'quantity' => 2,
+                'is_deleted' => 0
             ]);
 
 

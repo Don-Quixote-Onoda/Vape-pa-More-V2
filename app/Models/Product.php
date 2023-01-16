@@ -9,11 +9,24 @@ class Product extends Model
 {
     use HasFactory;
 
+    public $table = 'products';
+    public $primary_key = 'id';
+    public $timestamp = true;
+
     protected $fillable = [
         'product_name',
         'price',
         'status',
         'product_type_id',
-        'quantity'
+        'quantity',
+        'is_deleted'
     ];
+
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
+
+    public function product_type() {
+        return $this->belongsTo(ProductType::class);
+    }
 }

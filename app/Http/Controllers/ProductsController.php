@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
 
 class ProductsController extends Controller
 {
@@ -14,9 +15,26 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'desc')->get();
+        $products = Product::select("*")->where('is_deleted', 0)->orderBy('id', 'desc')->get();
 
-        return $products;
+        $product_lists = array();
+
+        foreach ($products as $product) {
+            $product_list = array(
+                'id' => $product->id,
+                'product_name' => $product->product_name,
+                'price' => $product->price,
+                'product_type_id' => $product->product_type_id,
+                'quantity' => $product->quantity,
+                'status'=> $product->status,
+                'product_type' => $product->product_type
+            );
+            array_push($product_lists, $product_list);
+        }
+
+        return response()->json([
+            'products' => $product_lists
+        ]);
     }
 
     /**
@@ -37,35 +55,39 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $this->validate($request, [
+
+            $validator = Validator::make($request->all(), [
                 'product_name' => 'required',
                 'price' => 'required',
                 'status' => 'required',
-                'product_type_id' => 'required',
+                'product_type' => 'required',
                 'quantity' => 'required',
             ]);
 
-            $product = Product::create([
-                'product_name' => $request['product_name'],
-                'price' => $request['price'],
-                'status' => $request['status'],
-                'product_type_id' => $request['product_type_id'],
-                'quantity' => $request['quantity']
-            ]);
+            if($validator->fails()) {
+                return response()->json([
+                    'status' =>  400,
+                    'errors' => $validator->messages()
+                ]);
+            }
+            else {
 
-            return [
-                'success' => 1,
-                'results' => $product
-            ];
+                
 
-        } catch (\Throwable $th) {
-            //throw $th;
+                Product::create([
+                    'product_name' => $request['product_name'],
+                    'price' => $request['price'],
+                    'status' => $request['status'],
+                    'product_type_id' => $request['product_type'],
+                    'quantity' => $request['quantity'],
+                    'is_deleted' => 0,
+                ]);
 
-            return [
-                'error' => 0
-            ];
-        }
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Product Added Successfully!'
+                ]);
+            }
     }
 
     /**
@@ -78,7 +100,20 @@ class ProductsController extends Controller
     {
         $product = Product::find($id);
 
-        return $product;
+        if($product) {
+            return response()->json([
+                'status' => 200,
+                'product'=> $product,
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message'=> 'Product Not Found',
+            ]);
+        }
+
+        
     }
 
     /**
@@ -101,35 +136,37 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            $this->validate($request, [
-                'product_name' => 'required',
-                'price' => 'required',
-                'status' => 'required',
-                'product_type_id' => 'required',
-                'quantity' => 'required',
+        $validator = Validator::make($request->all(), [
+            'product_name' => 'required',
+            'price' => 'required',
+            'status' => 'required',
+            'product_type' => 'required',
+            'quantity' => 'required',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'status' =>  400,
+                'errors' => $validator->messages()
             ]);
+        }
+        else {
+
+            
 
             $product = Product::find($id);
             $product->update([
                 'product_name' => $request['product_name'],
                 'price' => $request['price'],
                 'status' => $request['status'],
-                'product_type_id' => $request['product_type_id'],
+                'product_type_id' => $request['product_type'],
                 'quantity' => $request['quantity']
             ]);
 
-            return [
-                'success' => 1,
-                'results' => $product
-            ];
-
-        } catch (\Throwable $th) {
-            //throw $th;
-
-            return [
-                'error' => 0
-            ];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product Updated Successfully!'
+            ]);
         }
     }
 
@@ -142,11 +179,21 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
-        $product->delete();
+        
+        if($product) {
+            $product->is_deleted = 1;
+            $product->save();
 
-        return [
-            'success' => 1,
-            'results' => $product
-        ];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product Deleted Successfully!'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Product Not Found!'
+            ]);
+        }
     }
 }

@@ -20,14 +20,14 @@
                     <ul class="nav sidebar-inner" id="sidebar-menu">
     
                         {{-- Dashboard link --}}
-                        <li class="{{ Request::route()->getName() == 'admin.dashboard' ? 'active' : '' }}">
+                        <li class="{{($navigation=='dashboard')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('dashboard')">
                                 <i class="mdi mdi-briefcase-account-outline"></i>
                                 <span class="nav-text">Dashboard</span>
                             </a>
     
                             {{-- Inventory Controls  --}}
-                        <li>
+                        <li class="{{($navigation=='inventory')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('inventory')">
                                 <i class="mdi mdi-note-text"></i>
                                 <span class="nav-text">Inventory </span>
@@ -57,7 +57,7 @@
                 @endif --}}
     
                         {{-- Orders  --}}
-                        <li>
+                        <li class="{{($navigation=='orders')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('orders')">
                                 <i class="mdi mdi-basket"></i>
                                 <span class="nav-text">Orders </span>
@@ -87,7 +87,7 @@
                 @endif --}}
     
                         {{-- Orders Details  --}}
-                        <li>
+                        <li class="{{($navigation=='order-details')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('order-details')">
                                 <i class="mdi mdi-basket-fill"></i>
                                 <span class="nav-text">Order Details </span>
@@ -117,7 +117,7 @@
                 @endif --}}
     
                         {{-- Customers  --}}
-                        <li>
+                        <li class="{{($navigation=='customers')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('customers')">
                                 <i class="mdi mdi-file-account"></i>
                                 <span class="nav-text">Customers </span>
@@ -147,7 +147,7 @@
                 @endif --}}
     
                         {{-- Payment  --}}
-                        <li>
+                        <li class="{{($navigation=='payments')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('payments')">
                                 <i class="mdi mdi-cash-multiple"></i>
                                 <span class="nav-text">Payments </span>
@@ -178,7 +178,7 @@
                 @endif --}}
     
                         {{-- Products  --}}
-                        <li>
+                        <li class="{{($navigation=='products')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('products')">
                                 <i class="mdi mdi-package-variant-closed"></i>
                                 <span class="nav-text">Products </span>
@@ -313,7 +313,7 @@
                     @endif
 
                     @if($navigation == 'payments')
-                        <livewire:payment-component />
+                        <livewire:payments-component />
                     @endif
 
                     @if($navigation == 'products')

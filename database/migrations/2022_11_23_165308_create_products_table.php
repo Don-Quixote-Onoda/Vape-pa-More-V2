@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->double('price', 10, 2);
             $table->integer('status');
+            $table->integer('is_deleted');
             $table->foreignId('product_type_id')->constrained();
             $table->integer('quantity');
             $table->timestamps();
