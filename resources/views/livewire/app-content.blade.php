@@ -9,7 +9,7 @@
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
                 <div class="app-brand">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}" class="text-decoration-none">
                         <img src="{{ asset('admin-assets/images/logo.png') }}" alt="Vape Pa More">
                         <span class="brand-name">Vape Pa More</span>
                     </a>
@@ -27,12 +27,12 @@
                             </a>
     
                             {{-- Inventory Controls  --}}
-                        <li class="{{($navigation=='inventory')? 'active' : ''}}">
+                        {{-- <li class="{{($navigation=='inventory')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('inventory')">
                                 <i class="mdi mdi-note-text"></i>
                                 <span class="nav-text">Inventory </span>
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- @if (auth()->user()->role == 1)
                 <li class="{{ Request::route()->getName() == 'admin-inventory_controls' ? 'active' : '' }}">
                     <a class="sidenav-item-link" href="{{ route('admin-inventory_controls') }}">
@@ -296,9 +296,9 @@
                         <livewire:dashboard-component />
                     @endif
 
-                    @if($navigation == 'inventory')
+                    {{-- @if($navigation == 'inventory')
                         <livewire:inventory-component />
-                    @endif
+                    @endif --}}
 
                     @if($navigation == 'orders')
                         <livewire:orders-component />
@@ -327,8 +327,7 @@
             <footer class="footer mt-auto">
                 <div class="copyright bg-white">
                     <p>
-                        &copy; <span id="copy-year"></span> Copyright Mono Dashboard Bootstrap Template by <a
-                            class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
+                        &copy; <span id="copy-year"></span> Copyright VapePaMore.
                     </p>
                 </div>
                 <script>

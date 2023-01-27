@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 
-<!--
- // WEBSITE: https://themefisher.com
- // TWITTER: https://twitter.com/themefisher
- // FACEBOOK: https://www.facebook.com/themefisher
- // GITHUB: https://github.com/themefisher/
--->
-
 <html lang="en" dir="ltr">
 
 <head>
@@ -40,12 +33,6 @@
 
 
 <body class="navbar-fixed sidebar-fixed" id="body">
-    <script>
-        NProgress.configure({
-            showSpinner: false
-        });
-        NProgress.start();
-    </script>
     <!-- ====================================
     ——— WRAPPER
     ===================================== -->
@@ -59,87 +46,7 @@
             <!-- Header -->
             <header class="main-header p-0" id="header">
                 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-                    <!-- Sidebar toggle button -->
-                    <button id="sidebar-toggler" class="sidebar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                    </button>
-
-
-                    @if (\Request::route()->getName() == 'admin.dashboard')
-                        <span class="page-title">Admin Dashboard</span>
-                    @endif
-                    @if (\Request::route()->getName() == 'admin-user')
-                        <span class="page-title">User Management</span>
-                    @endif
-
-
-
-
-                    <div class="navbar-right ">
-
-                        <!-- search form -->
-                        <div class="search-form">
-                            <form action="index.html" method="get">
-                                <div class="input-group input-group-sm" id="input-group-search">
-                                    <input type="text" autocomplete="off" name="query" id="search-input"
-                                        class="form-control" placeholder="Search..." />
-                                    <div class="input-group-append">
-                                        <button class="btn" type="button">/</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <ul class="dropdown-menu dropdown-menu-search">
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Morbi leo risus</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Dapibus ac facilisis in</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Porta ac consectetur ac</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Vestibulum at eros</a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                        <ul class="nav navbar-nav">
-                            <!-- User Account -->
-                            <li class="dropdown user-menu">
-                                <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <span class="d-none d-lg-inline-block">John Doe</span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a class="dropdown-link-item" href="user-profile.html">
-                                            <i class="mdi mdi-account-outline"></i>
-                                            <span class="nav-text">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-link-item" href="user-account-settings.html">
-                                            <i class="mdi mdi-settings"></i>
-                                            <span class="nav-text">Account Setting</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="dropdown-footer">
-                                        <a class="dropdown-link-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="mdi mdi-logout"></i> Log Out </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </nav>
 
 
@@ -232,8 +139,7 @@
             <footer class="footer mt-auto">
                 <div class="copyright bg-white">
                     <p>
-                        &copy; <span id="copy-year"></span> Copyright Mono Dashboard Bootstrap Template by <a
-                            class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
+                        &copy; <span id="copy-year"></span> Copyright VapePaMore.
                     </p>
                 </div>
                 <script>
@@ -246,110 +152,6 @@
         </div>
     </div>
 
-    <!-- Card Offcanvas -->
-    <div class="card card-offcanvas" id="contact-off">
-        <div class="card-header">
-            <h2>Contacts</h2>
-            <a href="#" class="btn btn-primary btn-pill px-4">Add New</a>
-        </div>
-        <div class="card-body">
-
-            <div class="mb-4">
-                <input type="text" class="form-control form-control-lg form-control-secondary rounded-0"
-                    placeholder="Search contacts...">
-            </div>
-
-            <div class="media media-sm">
-                <div class="media-sm-wrapper">
-                    <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-01.jpg') }}" alt="User Image">
-                        <span class="active bg-primary"></span>
-                    </a>
-                </div>
-                <div class="media-body">
-                    <a href="user-profile.html">
-                        <span class="title">Selena Wagner</span>
-                        <span class="discribe">Designer</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="media media-sm">
-                <div class="media-sm-wrapper">
-                    <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-02.jpg') }}" alt="User Image">
-                        <span class="active bg-primary"></span>
-                    </a>
-                </div>
-                <div class="media-body">
-                    <a href="user-profile.html">
-                        <span class="title">Walter Reuter</span>
-                        <span>Developer</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="media media-sm">
-                <div class="media-sm-wrapper">
-                    <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-03.jpg') }}" alt="User Image">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <a href="user-profile.html">
-                        <span class="title">Larissa Gebhardt</span>
-                        <span>Cyber Punk</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="media media-sm">
-                <div class="media-sm-wrapper">
-                    <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-04.jpg') }}" alt="User Image">
-                    </a>
-
-                </div>
-                <div class="media-body">
-                    <a href="user-profile.html">
-                        <span class="title">Albrecht Straub</span>
-                        <span>Photographer</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="media media-sm">
-                <div class="media-sm-wrapper">
-                    <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-05.jpg') }}" alt="User Image">
-                        <span class="active bg-danger"></span>
-                    </a>
-                </div>
-                <div class="media-body">
-                    <a href="user-profile.html">
-                        <span class="title">Leopold Ebert</span>
-                        <span>Fashion Designer</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="media media-sm">
-                <div class="media-sm-wrapper">
-                    <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-06.jpg') }}" alt="User Image">
-                        <span class="active bg-primary"></span>
-                    </a>
-                </div>
-                <div class="media-body">
-                    <a href="user-profile.html">
-                        <span class="title">Selena Wagner</span>
-                        <span>Photographer</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
 
     <script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>

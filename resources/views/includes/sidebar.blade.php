@@ -5,7 +5,7 @@
      <div id="sidebar" class="sidebar sidebar-with-footer">
          <!-- Aplication Brand -->
          <div class="app-brand">
-             <a href="{{ route('admin.dashboard') }}">
+             <a href="{{ route('admin.dashboard') }}" class="text-decoration-none">
                  <img src="{{ asset('admin-assets/images/logo.png') }}" alt="Vape Pa More">
                  <span class="brand-name">Vape Pa More</span>
              </a>

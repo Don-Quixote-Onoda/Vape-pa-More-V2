@@ -34,18 +34,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!--
-    HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
-  -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-  
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-    <script src="{{ asset('admin-assets/plugins/nprogress/nprogress.js') }}"></script>
+   
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+        <script src="{{ asset('admin-assets/plugins/nprogress/nprogress.js') }}"></script>
+
+         {{-- Add Select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
 
@@ -69,7 +67,6 @@
     
     @livewireScripts
 
-    <script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/apexcharts/apexcharts.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/daterangepicker/moment.min.js') }}"></script>
@@ -101,7 +98,11 @@
     <script src="{{ asset('admin-assets/js/map.js') }}"></script>
     <!--  -->
 
-
+    <script>
+        $(document).ready(function() {
+            $('#products').select2();
+        });
+    </script>
 </body>
 
 </html>

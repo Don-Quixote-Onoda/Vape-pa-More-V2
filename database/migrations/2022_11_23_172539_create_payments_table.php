@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('order_detail_id')->constrained();
             $table->double('purchase', 10, 2);
+            $table->integer('is_deleted');
             $table->timestamps();
         });
     }

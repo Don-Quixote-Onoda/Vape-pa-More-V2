@@ -20,8 +20,8 @@ class OrderSeeder extends Seeder
                 'product_id' => 1,
                 'user_id' => 2,
                 'order_number' => '3355',
-                'status' => 1,
                 'quantity' => 20,
+                'is_deleted' => 0,
                 'total_price' =>4000.10
             ]);
 
@@ -29,8 +29,8 @@ class OrderSeeder extends Seeder
                 'product_id' => 2,
                 'user_id' => 2,
                 'order_number' => '3355',
-                'status' => 1,
                 'quantity' => 5,
+                'is_deleted' => 0,
                 'total_price' => 4000.10
             ]);
 
@@ -38,8 +38,8 @@ class OrderSeeder extends Seeder
                 'product_id' => 3,
                 'user_id' => 2,
                 'order_number' => '3355',
-                'status' => 1,
                 'quantity' => 1,
+                'is_deleted' => 0,
                 'total_price' => 3000
             ]);
 
@@ -47,8 +47,8 @@ class OrderSeeder extends Seeder
                 'product_id' => 4,
                 'user_id' => 2,
                 'order_number' => '0035',
-                'status' => 1,
                 'quantity' => 2,
+                'is_deleted' => 0,
                 'total_price' => 1000
             ]);
 
@@ -56,8 +56,8 @@ class OrderSeeder extends Seeder
                 'product_id' => 3,
                 'user_id' => 2,
                 'order_number' => '0035',
-                'status' => 1,
                 'quantity' => 1,
+                'is_deleted' => 0,
                 'total_price' => 3000
             ]);
     }

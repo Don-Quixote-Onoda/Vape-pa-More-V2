@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
                 'phone_number' => '093834238',
                 'username' => 'johndoe',
                 'role' => '1',
+                'is_deleted' => 0,
                 'email' => 'johndoe@testemail.com',
                 'password' => bcrypt('password')
             ]);
@@ -38,6 +39,7 @@ class UsersTableSeeder extends Seeder
                 'phone_number' => '094378434',
                 'username' => 'janedoe',
                 'role' => '1',
+                'is_deleted' => 0,
                 'email' => 'janedoe@testemail.com',
                 'password' => bcrypt('password')
             ]);

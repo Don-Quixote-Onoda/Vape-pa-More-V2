@@ -17,26 +17,31 @@ class ProductTypeSeeder extends Seeder
     {
             ProductType::create([
                 'name' => 'Juice',
+                'is_deleted' => 0,
                 'type' => '3mg'
             ]);
 
             ProductType::create([
                 'name' => 'Juice',
+                'is_deleted' => 0,
                 'type' => '6mg'
             ]);
 
             ProductType::create([
                 'name' => 'Juice',
+                'is_deleted' => 0,
                 'type' => '0mg'
             ]);
 
             ProductType::create([
                 'name' => 'Vape',
+                'is_deleted' => 0,
                 'type' => 'N/A'
             ]);
 
             ProductType::create([
                 'name' => 'Tank',
+                'is_deleted' => 0,
                 'type' => 'N/A'
             ]);
     }

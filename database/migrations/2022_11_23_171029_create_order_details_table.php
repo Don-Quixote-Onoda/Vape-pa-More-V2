@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double('total_amount', 10, 2);
             $table->foreignId('user_id')->constrained();
             $table->string('order_number');
+            $table->integer('is_deleted');
             $table->timestamps();
         });
     }

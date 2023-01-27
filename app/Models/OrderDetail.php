@@ -16,7 +16,8 @@ class OrderDetail extends Model
     protected $fillable = [
         'total_amount',
         'user_id',
-        'order_number'
+        'order_number',
+        'is_deleted'
     ];
 
     public function payment() {

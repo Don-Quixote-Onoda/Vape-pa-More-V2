@@ -18,9 +18,9 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->string('order_number');
-            $table->integer('status');
             $table->integer('quantity');
             $table->double('total_price', 10, 2);
+            $table->integer('is_deleted');
             $table->timestamps();
         });
     }

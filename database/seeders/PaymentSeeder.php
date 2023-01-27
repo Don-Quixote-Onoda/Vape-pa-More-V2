@@ -19,12 +19,14 @@ class PaymentSeeder extends Seeder
             Payment::create([
                 'user_id' => 2,
                 'order_detail_id' => 1,
+                'is_deleted' => 0,
                 'purchase' => 11000.2
             ]);
 
             Payment::create([
                 'user_id' => 2,
                 'order_detail_id' => 2,
+                'is_deleted' => 0,
                 'purchase' => 4000
             ]);
     }

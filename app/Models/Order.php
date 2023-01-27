@@ -18,8 +18,8 @@ class Order extends Model
         'user_id',
         'order_number',
         'status',
-        'quatity',
-        'total_price'
+        'total_price',
+        'is_deleted'
     ];
 
     public function product() {

@@ -16,7 +16,8 @@ class Payment extends Model
     protected $fillable = [
         'user_id',
         'order_detail_id',
-        'purchase'
+        'purchase',
+        'is_deleted'
     ];
 
     public function order_detail() {

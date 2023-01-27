@@ -187,7 +187,7 @@
             function fetchProducts() {
                 $.ajax({
                     type: 'GET',
-                    url: '/api/v2/products',
+                    url: "{{route('products')}}",
                     dataType: 'json',
                     success: function(response) {
                         if(response.products.length > 0) {

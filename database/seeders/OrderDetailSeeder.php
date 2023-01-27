@@ -18,12 +18,14 @@ class OrderDetailSeeder extends Seeder
             OrderDetail::create([
                 'total_amount' => 11000.2,
                 'user_id' => 2,
+                'is_deleted' => 0,
                 'order_number'=> '3355'
             ]);
 
             OrderDetail::create([
                 'total_amount' => 4000,
                 'user_id' => 2,
+                'is_deleted' => 0,
                 'order_number'=> '0035'
             ]);
     }
