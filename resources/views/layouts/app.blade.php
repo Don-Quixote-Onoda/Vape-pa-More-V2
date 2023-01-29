@@ -63,7 +63,13 @@
     <!-- ====================================
     ——— WRAPPER
     ===================================== -->
-    <livewire:app-content />
+    @if (Auth::user()->role == 1)
+        <livewire:app-content />
+    @endif
+    
+    @if (Auth::user()->role == 2)
+        <livewire:employee-app-content />
+    @endif
     
     @livewireScripts
 

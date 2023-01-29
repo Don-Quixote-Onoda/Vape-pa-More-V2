@@ -76,33 +76,31 @@
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="row">
+                                            
                                             <div class="form-group col-md-12 mb-4">
+                                                
                                                 <input type="email"
                                                     class="form-control input-lg @error('email') is-invalid @enderror"
                                                     id="email" aria-describedby="emailHelp" placeholder="email"
                                                     name="email" value="{{ old('email') }}" required
                                                     autocomplete="email" autofocus>
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                               
                                             </div>
                                             <div class="form-group col-md-12 ">
                                                 <input type="password" name="password"
                                                     class="form-control input-lg @error('password') is-invalid @enderror"
                                                     id="password" placeholder="Password" required
                                                     autocomplete="current-password">
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                    @if (session()->has('error'))
+                                                        <span class="text-danger" role="alert">
+                                                            <strong>{{session('error')}}</strong>
+                                                        </span>
+                                                    @endif
                                             </div>
                                             <div class="col-md-12">
 
                                                 <div class="d-flex justify-content-between mb-3">
-
+                                                    
                                                     <div class="custom-control custom-checkbox mr-3 mb-3">
                                                         <input type="checkbox" class="custom-control-input"
                                                             id="customCheck2">
@@ -115,6 +113,7 @@
 
                                                 </div>
 
+                                                
                                                 <button type="submit" class="btn btn-primary btn-pill mb-4">Sign
                                                     In</button>
 
@@ -139,10 +138,13 @@
             <footer class="footer mt-auto">
                 <div class="copyright bg-white">
                     <p>
-                        &copy; <span id="copy-year"></span> Copyright VapePaMore.
+                        &copy; <span id="copy-year"></span> 
+                       
+                        Copyright VapePaMore.
                     </p>
                 </div>
                 <script>
+                    toastr.success(response.message, "Success!");
                     var d = new Date();
                     var year = d.getFullYear();
                     document.getElementById("copy-year").innerHTML = year;

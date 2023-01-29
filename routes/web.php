@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('homepage');
 
 Auth::routes();
 
@@ -28,5 +28,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth']], functio
 });
 
 Route::group(['prefix' => 'employee', 'middleware' => ['isEmployee', 'auth']], function() {
-
+    Route::get('dashboard', [AdminController::class, 'index'])->name('employee.dashboard');
 });

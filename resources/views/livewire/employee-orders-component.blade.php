@@ -26,7 +26,7 @@
                 <div class="card-header">
                   Order Details
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="min-height: 50vh;">
                     <table class="w-100">
                         <thead>
                             <tr class="d-flex justify-content-between">
@@ -88,18 +88,16 @@
             
         }
 
+        // Instatiate product price
+        var product_price;
+
         $('#products').on('change', function() {
             $.ajax({
                 type: 'GET',
                 url: "/api/v2/products/"+$("#products").val(),
                 dataType: 'json',
                 success: function(response) {
-                    $('.product-content h5').empty();
-                    $('.product-content p').empty();
-                    $('.product-content').append('\
-                    <h5>'+response.product.product_name+'</h5>\
-                    <p>₱ '+response.product.price+'</p>\
-                    ');
+                    product_price = response.product.price;
                 }
             });
 
@@ -108,6 +106,8 @@
 
         $('.add-order').on('click', function(e) {
             e.preventDefault();
+
+            // Instantiate required data
             var product_id = $("#products").val();
             var user_id = $('.user-id').val();
             var order_number = $('.order-number').val();
@@ -117,8 +117,60 @@
                 'product_id' : product_id,
                 'user_id' : user_id,
                 'order_number' : order_number,
-                'quantity' : quantity
+                'quantity' : quantity,
+                'total_price' : product_price * quantity
             });
+
+            $.ajax({
+                    type: 'POST',
+                    url: '/api/v2/order',
+                    data: data,
+                    dataType: 'json',
+                    success: function(response) {
+                        // if(response.status == 400) {
+                        //     $('.add-product-form').addClass('was-validated');
+                        //     if(typeof response.errors.product_name !== 'undefined') {
+                        //         $.each(response.errors.product_name, function(key, err_values) {
+                        //             $('.product-name-error').text(err_values);
+                        //         });
+                        //     }
+                        
+                        //     if(typeof response.errors.price !== 'undefined') {
+                        //         $.each(response.errors.price, function(key, err_values) {
+                        //             $('.price-error').text(err_values);
+                        //         });
+                        //     }
+
+                        //     if(typeof response.errors.status !== 'undefined') {
+                        //         $.each(response.errors.status, function(key, err_values) {
+                        //             $('.status-error').text(err_values);
+                        //         });
+                        //     }
+
+                        //     if(typeof response.errors.product_type !== 'undefined') {
+                        //         $.each(response.errors.product_type, function(key, err_values) {
+                        //             $('.product-type-error').text(err_values);
+                        //         });
+                        //     }
+
+                        //     if(typeof response.errors.quantity !== 'undefined') {
+                        //         $.each(response.errors.quantity, function(key, err_values) {
+                        //             $('.quantity-error').text(err_values);
+                        //         });
+                        //     }
+                        // }
+                        // else {
+                        //     $("#productModal").hide();
+                        //     $("#productModal").find("input").val("");
+                        //     $("#productModal").find("select").val("");
+                        //     $('.modal-backdrop').hide();
+                        //     $('.add-product-form').removeClass('was-validated');
+                        //     toastr.success(response.message, "Success!");
+                        //     fetchProducts();
+                        // }
+                            
+                    }
+                });
         });
     });
 </script>

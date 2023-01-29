@@ -60,6 +60,7 @@ class UserController extends Controller
                 'username' => $request['username'],
                 'role' => $request['role'],
                 'email' => $request['email'],
+                'is_deleted' => 0,
                 'password' => bcrypt($request['password'])
             ]);
 

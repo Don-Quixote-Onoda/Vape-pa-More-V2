@@ -52,7 +52,7 @@
                   <!-- User Account -->
                   <li class="dropdown user-menu">
                     <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                      <span class="d-none d-lg-inline-block">John Doe</span>
+                      <span class="d-none d-lg-inline-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <li>

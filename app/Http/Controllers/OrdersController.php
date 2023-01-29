@@ -47,41 +47,39 @@ class OrdersController extends Controller
             'total_price' =>4000.10
         ]);
 
-        // DB::insert('insert into `orders` (`product_id`, `user_id`, `order_number`, `status`, `quantity`, `total_price`, `updated_at`, `created_at`) values ('.$request['product_id'].', '.$request['user_id'].', '.$request['order_number'].', '.$request['quantity'].', '.$request['total_price'].', '.date('Y-m-d h:i:s', time()).', '.date('Y-m-d h:i:s', time()).'))');
-        // $order = new Order;
-        // $order->quantity = $request['quantity'];
-        // try {
-        //     $this->validate($request, [
-        //         'product_id' => 'required',
-        //         'user_id' => 'required',
-        //         'order_number' => 'required',
-        //         'status' => 'required',
-        //         'quantity' => 'required',
-        //         'total_price' => 'required'
-        //     ]);
+        $validator = Validator::make($request->all(), [
+            'product_name' => 'required',
+            'price' => 'required',
+            'status' => 'required',
+            'product_type' => 'required',
+            'quantity' => 'required',
+        ]);
 
-        //     $order = Order::create([
-        //         'product_id' => 4,
-        //         'user_id' => 2,
-        //         'order_number' => '0035',
-        //         'status' => 1,
-        //         'quantity' => 2,
-        //         'total_price' => 1000
-        //     ]);
+        if($validator->fails()) {
+            return response()->json([
+                'status' =>  400,
+                'errors' => $validator->messages()
+            ]);
+        }
+        else {
 
-        //     return [
-        //         'success' => 1,
-        //         'results' => $order
-        //     ];
-        // } catch (\Throwable $th) {
-        //     //throw $th;
+            
 
-        //     return $th;
+            Order::create([
+                'product_id' => 1,
+                'user_id' => 2,
+                'order_number' => '3355',
+                'status' => 1,
+                'product_quantity' => 20,
+                'total_price' =>4000.10
+            ]);
+    
 
-        //     return [
-        //         'error' => 0
-        //     ];
-        // }
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product Added Successfully!'
+            ]);
+        }
     }
 
     /**
