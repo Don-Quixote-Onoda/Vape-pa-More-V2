@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Validator;
 
 class OrderDetailsController extends Controller
 {
@@ -37,21 +38,22 @@ class OrderDetailsController extends Controller
     public function store(Request $request)
     {
         try {
-            $order_detail = OrderDetail::create([
+            OrderDetail::create([
                 'total_amount' => $request['total_amount'],
                 'user_id' => $request['user_id'],
-                'order_number' => $request['order_number']
+                'order_number' => $request['order_number'],
+                'is_deleted' =>0
             ]);
 
-            return [
-                'success' => 1,
-                'results' => $order_detail
-            ];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Orders Added Successfully!'
+            ]);
         } catch (\Throwable $th) {
-            //throw $th;
-            return [
-                'error' => 0
-            ];
+            return response()->json([
+                'status' =>  400,
+                'errors' => $th
+            ]);
         }
     }
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class OrdersController extends Controller
 {
@@ -15,9 +17,45 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('id', 'desc')->get();
+        $order_detail = OrderDetail::select("*")->where('is_deleted', 0)->orderBy('id', 'desc')->get();
 
-        return $orders;
+        return response()->json([
+            'orders' => $order_detail
+        ]);
+    }
+
+    public function order_number() {
+
+        $order_detail = OrderDetail::select("*")->where('is_deleted', 0)->orderBy('id', 'desc')->get();
+        $order_number = 'VPM-'.$order_detail[0]->id;
+
+
+        $orders = Order::select("*")
+        ->where('order_number', $order_number)
+        ->orderBy('id', 'asc')->get();
+
+        $order_lists = array();
+        $total_price = 0;
+
+        foreach ($orders as $order) {
+            $order_list = array(
+                'id' => $order->id,
+                'product_id' => $order->product_id,
+                'user_id' => $order->user_id,
+                'order_number' => $order->order_number,
+                'quantity' => $order->quantity,
+                'total_price'=> $order->total_price,
+                'product' => $order->product
+            );
+            array_push($order_lists, $order_list);
+
+            $total_price += $order->total_price;
+        }
+
+        return response()->json([
+            'orders' => $order_lists,
+            'total_price' => $total_price
+        ]);
     }
 
     /**
@@ -38,20 +76,10 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        Order::create([
-            'product_id' => 1,
-            'user_id' => 2,
-            'order_number' => '3355',
-            'status' => 1,
-            'product_quantity' => 20,
-            'total_price' =>4000.10
-        ]);
+        // return $request;
 
         $validator = Validator::make($request->all(), [
-            'product_name' => 'required',
-            'price' => 'required',
-            'status' => 'required',
-            'product_type' => 'required',
+            'product_id' => 'required',
             'quantity' => 'required',
         ]);
 
@@ -63,17 +91,14 @@ class OrdersController extends Controller
         }
         else {
 
-            
-
             Order::create([
-                'product_id' => 1,
-                'user_id' => 2,
-                'order_number' => '3355',
-                'status' => 1,
-                'product_quantity' => 20,
-                'total_price' =>4000.10
+                'product_id' => $request['product_id'],
+                'user_id' => $request['user_id'],
+                'order_number' => $request['order_number'],
+                'quantity' => $request['quantity'],
+                'total_price' => $request['total_price'],
+                'is_deleted' =>0
             ]);
-    
 
             return response()->json([
                 'status' => 200,

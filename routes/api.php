@@ -54,15 +54,16 @@ Route::prefix('v2')->group(function() {
     });
 });
 
-// Route::prefix('v2')->group(function() {
-//     Route::prefix('/orders')->group(function() {
-//         Route::get('/', [OrdersController::class, 'index'])->name('orders');
-//         Route::get('/{id}', [OrdersController::class, 'show'])->name('order');
-//         Route::post('/', [OrdersController::class, 'store'])->name('add-order');
-//         Route::put('/update/{id}', [OrdersController::class, 'update'])->name('update-order');
-//         Route::delete('/destroy/{id}', [OrdersController::class, 'destroy'])->name('destroy-order');
-//     });
-// });
+Route::prefix('v2')->group(function() {
+    Route::prefix('/orders')->group(function() {
+        Route::get('/', [OrdersController::class, 'index'])->name('orders');
+        Route::get('/{id}', [OrdersController::class, 'show'])->name('order');
+        Route::post('/', [OrdersController::class, 'store'])->name('add-order');
+        Route::get('/order_number/{order_number}', [OrdersController::class, 'order_number'])->name('order-number');
+        Route::put('/update/{id}', [OrdersController::class, 'update'])->name('update-order');
+        Route::delete('/destroy/{id}', [OrdersController::class, 'destroy'])->name('destroy-order');
+    });
+});
 
 Route::prefix('v2')->group(function() {
     Route::prefix('/order_details')->group(function() {

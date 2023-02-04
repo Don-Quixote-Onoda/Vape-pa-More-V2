@@ -15,7 +15,7 @@
 
     <!-- PLUGINS CSS STYLE -->
     <link href="{{ asset('admin-assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin-assets/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}"
+    <link href="{{ asset('admin-assets/plugains/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}"
         rel="stylesheet" />
     <link href="{{ asset('admin-assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin-assets/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
@@ -51,87 +51,7 @@
             <!-- Header -->
             <header class="main-header p-0" id="header">
                 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-                    <!-- Sidebar toggle button -->
-                    <button id="sidebar-toggler" class="sidebar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                    </button>
 
-
-                    @if (\Request::route()->getName() == 'admin.dashboard')
-                        <span class="page-title">Admin Dashboard</span>
-                    @endif
-                    @if (\Request::route()->getName() == 'admin-user')
-                        <span class="page-title">User Management</span>
-                    @endif
-
-
-
-
-                    <div class="navbar-right ">
-
-                        <!-- search form -->
-                        <div class="search-form">
-                            <form action="index.html" method="get">
-                                <div class="input-group input-group-sm" id="input-group-search">
-                                    <input type="text" autocomplete="off" name="query" id="search-input"
-                                        class="form-control" placeholder="Search..." />
-                                    <div class="input-group-append">
-                                        <button class="btn" type="button">/</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <ul class="dropdown-menu dropdown-menu-search">
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Morbi leo risus</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Dapibus ac facilisis in</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Porta ac consectetur ac</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Vestibulum at eros</a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                        <ul class="nav navbar-nav">
-                            <!-- User Account -->
-                            <li class="dropdown user-menu">
-                                <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <span class="d-none d-lg-inline-block">John Doe</span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a class="dropdown-link-item" href="user-profile.html">
-                                            <i class="mdi mdi-account-outline"></i>
-                                            <span class="nav-text">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-link-item" href="user-account-settings.html">
-                                            <i class="mdi mdi-settings"></i>
-                                            <span class="nav-text">Account Setting</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="dropdown-footer">
-                                        <a class="dropdown-link-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="mdi mdi-logout"></i> Log Out </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                 </nav>
 
 
@@ -289,8 +209,6 @@
                                                             Administrator</option>
                                                         <option value="2" {{ old('role') == 2 ? 'selected' : '' }}>
                                                             Employee</option>
-                                                        <option value="3" {{ old('role') == 3 ? 'selected' : '' }}>
-                                                            Customer</option>
                                                     </select>
                                                     @error('role')
                                                         <span class="invalid-feedback" role="alert">
@@ -327,7 +245,7 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="d-flex justify-content-between mb-3">
-                                                
+
                                                         <div class="custom-control custom-checkbox mr-3 mb-3">
                                                             <input type="checkbox" class="custom-control-input"
                                                                 id="customCheck2">
@@ -335,9 +253,9 @@
                                                                 the
                                                                 terms and conditions.</label>
                                                         </div>
-                                                
+
                                                     </div>
-                                                
+
                                                     <button type="button" class="btn btn-secondary float-left mb-4 previous-form">Back</button>
                                                     <button type="submit" class="btn btn-primary float-right mb-4">{{ __('Sign Up') }}</button>
                                                 </div>
