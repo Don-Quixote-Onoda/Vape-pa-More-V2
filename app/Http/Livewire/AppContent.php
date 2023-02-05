@@ -15,6 +15,7 @@ class AppContent extends Component
     }
 
     public function showNav($navigation_name) {
+
         $this->navigation = $navigation_name;
     }
 }

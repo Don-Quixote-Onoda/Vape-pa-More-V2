@@ -17,9 +17,9 @@ class Order extends Model
         'product_id',
         'user_id',
         'order_number',
-        'status',
-        'total_price',
-        'is_deleted'
+        'quantity',
+        'is_deleted',
+        'total_price'
     ];
 
     public function product() {
@@ -30,5 +30,5 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    
+
 }

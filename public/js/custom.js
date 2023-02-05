@@ -369,32 +369,7 @@ $(document).ready(function () {
   NProgress.done();
 
   /*======== 14. DATA TABLE ========*/
-  var usersTable = $("#usersTable");
-  if (usersTable.length != 0) {
-    usersTable.DataTable({
-      info: false,
-      lengthChange: false,
-      lengthMenu: [
-        [5, 10, 15, -1],
-        [5, 10, 15, "All"],
-      ],
-      scrollX: true,
-      order: [[0, "asc"]],
-      columnDefs: [
-        {
-          orderable: false,
-          targets: [-1],
-        },
-      ],
-      language: {
-        search: "_INPUT_",
-        searchPlaceholder: "Search...",
-      },
-    });
-  }
-
-//   Products Table
-var productsTable = $("#productsTable");
+  var productsTable = $("#productsTable");
   if (productsTable.length != 0) {
     productsTable.DataTable({
       info: false,
@@ -404,11 +379,11 @@ var productsTable = $("#productsTable");
         [5, 10, 15, "All"],
       ],
       scrollX: true,
-      order: [[0, "asc"]],
+      order: [[2, "asc"]],
       columnDefs: [
         {
           orderable: false,
-          targets: [-1],
+          targets: [, 0, 6, -1],
         },
       ],
       language: {
@@ -417,107 +392,6 @@ var productsTable = $("#productsTable");
       },
     });
   }
-
-
-  //   Payments Table
-var paymentsTable = $("#paymentsTable");
-if (paymentsTable.length != 0) {
-  paymentsTable.DataTable({
-    info: false,
-    lengthChange: false,
-    lengthMenu: [
-      [5, 10, 15, -1],
-      [5, 10, 15, "All"],
-    ],
-    scrollX: true,
-    order: [[0, "asc"]],
-    columnDefs: [
-      {
-        orderable: false,
-        targets: [-1],
-      },
-    ],
-    language: {
-      search: "_INPUT_",
-      searchPlaceholder: "Search...",
-    },
-  });
-}
-
-  //   Customer Table
-  var customersTable = $("#customersTable");
-  if (customersTable.length != 0) {
-    customersTable.DataTable({
-      info: false,
-      lengthChange: false,
-      lengthMenu: [
-        [5, 10, 15, -1],
-        [5, 10, 15, "All"],
-      ],
-      scrollX: true,
-      order: [[0, "asc"]],
-      columnDefs: [
-        {
-          orderable: false,
-          targets: [-1],
-        },
-      ],
-      language: {
-        search: "_INPUT_",
-        searchPlaceholder: "Search...",
-      },
-    });
-  }
-
-//   Inventory Controls Table
-var inventoryControlsTable = $("#inventoryControlsTable");
-if (inventoryControlsTable.length != 0) {
-  inventoryControlsTable.DataTable({
-    info: false,
-    lengthChange: false,
-    lengthMenu: [
-      [5, 10, 15, -1],
-      [5, 10, 15, "All"],
-    ],
-    scrollX: true,
-    order: [[0, "asc"]],
-    columnDefs: [
-      {
-        orderable: false,
-        targets: [-1],
-      },
-    ],
-    language: {
-      search: "_INPUT_",
-      searchPlaceholder: "Search...",
-    },
-  });
-}
-
-//   Orders Table
-var ordersTable = $("#ordersTable");
-if (ordersTable.length != 0) {
-  ordersTable.DataTable({
-    info: false,
-    lengthChange: false,
-    lengthMenu: [
-      [5, 10, 15, -1],
-      [5, 10, 15, "All"],
-    ],
-    scrollX: true,
-    order: [[0, "asc"]],
-    columnDefs: [
-      {
-        orderable: false,
-        targets: [-1],
-      },
-    ],
-    language: {
-      search: "_INPUT_",
-      searchPlaceholder: "Search...",
-    },
-  });
-}
 
   var productSale = $("#product-sale");
   if (productSale.length != 0) {
