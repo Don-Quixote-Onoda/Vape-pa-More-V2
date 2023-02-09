@@ -66,7 +66,7 @@ Route::prefix('v2')->group(function() {
 });
 
 Route::prefix('v2')->group(function() {
-    Route::prefix('/order_details')->group(function() {
+    Route::prefix('/order-details')->group(function() {
         Route::get('/', [OrderDetailsController::class, 'index'])->name('order-details');
         Route::get('/{id}', [OrderDetailsController::class, 'show'])->name('order-detail');
         Route::post('/', [OrderDetailsController::class, 'store'])->name('add-order-detail');

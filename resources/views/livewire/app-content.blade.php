@@ -61,7 +61,7 @@
 
                         <li class="{{($navigation=='product-types')? 'active' : ''}}">
                             <a class="sidenav-item-link" href="" wire:click.prevent="showNav('product-types')">
-                                <i class="mdi mdi-package-variant-closed"></i>
+                                <i class="mdi mdi-format-list-bulleted-type"></i>
                                 <span class="nav-text">Product Types </span>
                             </a>
                         </li>

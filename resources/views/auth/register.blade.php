@@ -10,24 +10,24 @@
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
-    <link href="{{ asset('admin-assets/plugins/material/css/materialdesignicons.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin-assets/plugins/simplebar/simplebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/material/css/materialdesignicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/simplebar/simplebar.css') }}" rel="stylesheet" />
 
     <!-- PLUGINS CSS STYLE -->
-    <link href="{{ asset('admin-assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin-assets/plugains/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}"
+    <link href="{{ asset('plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugains/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}"
         rel="stylesheet" />
-    <link href="{{ asset('admin-assets/plugins/jvectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin-assets/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/jvectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin-assets/plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
 
     <!-- MONO CSS -->
-    <link id="main-css-href" rel="stylesheet" href="{{ asset('admin-assets/css/style.css') }}" />
+    <link id="main-css-href" rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
     <!-- FAVICON -->
-    <link href="'{{ asset('admin-assets/images/favicon.png') }}" rel="icon" />
-    <script src="{{ asset('admin-assets/plugins/nprogress/nprogress.js') }}"></script>
+    <link href="'{{ asset('images/favicon.png') }}" rel="icon" />
+    <script src="{{ asset('plugins/nprogress/nprogress.js') }}"></script>
 </head>
 
 
@@ -51,87 +51,10 @@
             <!-- Header -->
             <header class="main-header p-0" id="header">
                 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-                    <!-- Sidebar toggle button -->
-                    <button id="sidebar-toggler" class="sidebar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                    </button>
-
-
-                    @if (\Request::route()->getName() == 'admin.dashboard')
-                        <span class="page-title">Admin Dashboard</span>
-                    @endif
-                    @if (\Request::route()->getName() == 'admin-user')
-                        <span class="page-title">User Management</span>
-                    @endif
+                    
 
 
 
-
-                    <div class="navbar-right ">
-
-                        <!-- search form -->
-                        <div class="search-form">
-                            <form action="index.html" method="get">
-                                <div class="input-group input-group-sm" id="input-group-search">
-                                    <input type="text" autocomplete="off" name="query" id="search-input"
-                                        class="form-control" placeholder="Search..." />
-                                    <div class="input-group-append">
-                                        <button class="btn" type="button">/</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <ul class="dropdown-menu dropdown-menu-search">
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Morbi leo risus</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Dapibus ac facilisis in</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Porta ac consectetur ac</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Vestibulum at eros</a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                        <ul class="nav navbar-nav">
-                            <!-- User Account -->
-                            <li class="dropdown user-menu">
-                                <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <span class="d-none d-lg-inline-block">John Doe</span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a class="dropdown-link-item" href="user-profile.html">
-                                            <i class="mdi mdi-account-outline"></i>
-                                            <span class="nav-text">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-link-item" href="user-account-settings.html">
-                                            <i class="mdi mdi-settings"></i>
-                                            <span class="nav-text">Account Setting</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="dropdown-footer">
-                                        <a class="dropdown-link-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="mdi mdi-logout"></i> Log Out </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                 </nav>
 
 
@@ -151,7 +74,7 @@
                                     {{-- <div class="card-header pb-0">
                                         <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
                                             <a class="w-auto pl-0" href="/index.html">
-                                                <img src="{{ asset('admin-assets/images/logo.png') }}"
+                                                <img src="{{ asset('images/logo.png') }}"
                                                     alt="Mono">
                                                 <span class="brand-name text-dark">Vape Pa More</span>
                                             </a>
@@ -385,7 +308,7 @@
             <div class="media media-sm">
                 <div class="media-sm-wrapper">
                     <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-01.jpg') }}" alt="User Image">
+                        <img src="{{ asset('images/user/user-sm-01.jpg') }}" alt="User Image">
                         <span class="active bg-primary"></span>
                     </a>
                 </div>
@@ -400,7 +323,7 @@
             <div class="media media-sm">
                 <div class="media-sm-wrapper">
                     <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-02.jpg') }}" alt="User Image">
+                        <img src="{{ asset('images/user/user-sm-02.jpg') }}" alt="User Image">
                         <span class="active bg-primary"></span>
                     </a>
                 </div>
@@ -415,7 +338,7 @@
             <div class="media media-sm">
                 <div class="media-sm-wrapper">
                     <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-03.jpg') }}" alt="User Image">
+                        <img src="{{ asset('images/user/user-sm-03.jpg') }}" alt="User Image">
                     </a>
                 </div>
                 <div class="media-body">
@@ -429,7 +352,7 @@
             <div class="media media-sm">
                 <div class="media-sm-wrapper">
                     <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-04.jpg') }}" alt="User Image">
+                        <img src="{{ asset('images/user/user-sm-04.jpg') }}" alt="User Image">
                     </a>
 
                 </div>
@@ -444,7 +367,7 @@
             <div class="media media-sm">
                 <div class="media-sm-wrapper">
                     <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-05.jpg') }}" alt="User Image">
+                        <img src="{{ asset('images/user/user-sm-05.jpg') }}" alt="User Image">
                         <span class="active bg-danger"></span>
                     </a>
                 </div>
@@ -459,7 +382,7 @@
             <div class="media media-sm">
                 <div class="media-sm-wrapper">
                     <a href="user-profile.html">
-                        <img src="{{ asset('admin-assets/images/user/user-sm-06.jpg') }}" alt="User Image">
+                        <img src="{{ asset('images/user/user-sm-06.jpg') }}" alt="User Image">
                         <span class="active bg-primary"></span>
                     </a>
                 </div>
@@ -475,17 +398,17 @@
     </div>
 
 
-    <script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('plugins/simplebar/simplebar.min.js') }}"></script>
     <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/apexcharts/apexcharts.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/jvectormap/jquery-jvectormap-world-mill.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/jvectormap/jquery-jvectormap-us-aea.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/daterangepicker/moment.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('plugins/apexcharts/apexcharts.js') }}"></script>
+    <script src="{{ asset('plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-2.0.3.min.js') }}"></script>
+    <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-world-mill.js') }}"></script>
+    <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-us-aea.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script>
         jQuery(document).ready(function() {
             jQuery('input[name="dateRange"]').daterangepicker({
@@ -515,11 +438,11 @@
 
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="{{ asset('admin-assets/plugins/toaster/toastr.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/js/mono.js') }}"></script>
-    <script src="{{ asset('admin-assets/js/chart.js') }}"></script>
-    <script src="{{ asset('admin-assets/js/map.js') }}"></script>
-    <script src="{{ asset('admin-assets/js/custom.js') }}"></script>
+    <script src="{{ asset('plugins/toaster/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/mono.js') }}"></script>
+    <script src="{{ asset('js/chart.js') }}"></script>
+    <script src="{{ asset('js/map.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     <!--  -->
 
 

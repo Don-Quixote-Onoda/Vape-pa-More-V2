@@ -17,6 +17,7 @@ class ProductSeeder extends Seeder
     {
             Product::create([
                 'product_name' => 'Absurb Lethal UBE',
+                'product_image' => '/image/product.jpg',
                 'price' => 200.50,
                 'status' => 1,
                 'product_type_id' => 1,
@@ -26,6 +27,7 @@ class ProductSeeder extends Seeder
 
             Product::create([
                 'product_name' => 'Absurb Lethal UBE',
+                'product_image' => '/image/product.jpg',
                 'price' => 200.50,
                 'status' => 1,
                 'product_type_id' => 2,
@@ -35,6 +37,7 @@ class ProductSeeder extends Seeder
 
             Product::create([
                 'product_name' => 'Geek Vape',
+                'product_image' => '/image/product.jpg',
                 'price' => 3000,
                 'status' => 1,
                 'product_type_id' => 4,
@@ -44,6 +47,7 @@ class ProductSeeder extends Seeder
 
             Product::create([
                 'product_name' => 'Sample Tank',
+                'product_image' => '/image/product.jpg',
                 'price' => 500,
                 'status' => 1,
                 'product_type_id' => 5,

@@ -32,6 +32,7 @@
 
     <link href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
 
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -57,18 +58,11 @@
 
 
 <body class="navbar-fixed sidebar-fixed" id="body">
-    <script>
-        NProgress.configure({
-            showSpinner: false
-        });
-        NProgress.start();
-    </script>
 
 
     <div id="toaster"></div>
 
-    <livewire:app-content />
-
+    @include('includes.sidebar')
 
     <!-- Card Offcanvas -->
     <div class="card card-offcanvas" id="contact-off">

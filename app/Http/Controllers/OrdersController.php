@@ -17,10 +17,10 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $order_detail = OrderDetail::select("*")->where('is_deleted', 0)->orderBy('id', 'desc')->get();
+        $orders = Order::select("*")->where('is_deleted', 0)->orderBy('id', 'desc')->get();
 
         return response()->json([
-            'orders' => $order_detail
+            'orders' => $orders
         ]);
     }
 

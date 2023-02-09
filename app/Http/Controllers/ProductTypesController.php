@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProductType;
+use Illuminate\Support\Facades\Validator;
 
 class ProductTypesController extends Controller
 {
@@ -14,7 +15,9 @@ class ProductTypesController extends Controller
      */
     public function index()
     {
-        $product_types = ProductType::orderBy('id', 'desc')->get();
+        $product_types = ProductType::orderBy('id', 'desc')
+        ->where('is_deleted', 0)
+        ->get();
         return $product_types;
     }
 
@@ -36,25 +39,29 @@ class ProductTypesController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $this->validate($request, [
-                'name' => 'required',
-                'type' => 'required',
-            ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'type' => 'required'
+        ]);
 
-            $product_type = ProductType::create([
+        if($validator->fails()) {
+            return response()->json([
+                'status' =>  400,
+                'errors' => $validator->messages()
+            ]);
+        }
+        else {
+
+            ProductType::create([
                 'name' => $request['name'],
-                'type' => $request['type']
+                'type' => $request['type'],
+                'is_deleted' => 0,
             ]);
 
-            return [
-                'success' => 1,
-                'results' => $product_type
-            ];
-        } catch (\Throwable $th) {
-            //throw $th;
-
-            return ['error' => 0];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product Added Successfully!'
+            ]);
         }
     }
 
@@ -68,7 +75,10 @@ class ProductTypesController extends Controller
     {
         $product_type = ProductType::find($id);
 
-        return $product_type;
+        return response()->json([
+            'producttype' => $product_type,
+            'status' => 200
+        ]);
     }
 
     /**
@@ -91,27 +101,29 @@ class ProductTypesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            $this->validate($request, [
-                'name' => 'required',
-                'type' => 'required',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'type' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'status' =>  400,
+                'errors' => $validator->messages()
             ]);
-
-            $product_type = ProductType::find($id);
-
-            $product_type->update([
+        }
+        else {
+            $producttype = ProductType::find($id);
+            $producttype->update([
                 'name' => $request['name'],
-                'type' => $request['type']
+                'type' => $request['type'],
+                'is_deleted' => 0,
             ]);
 
-            return [
-                'success' => 1,
-                'results' => $product_type
-            ];
-        } catch (\Throwable $th) {
-            //throw $th;
-
-            return ['error' => 0];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product Type Added Successfully!'
+            ]);
         }
     }
 
@@ -123,12 +135,22 @@ class ProductTypesController extends Controller
      */
     public function destroy($id)
     {
-        $product_type = ProductType::find($id);
-        $product_type->delete();
+        $producttype = ProductType::find($id);
+        
+        if($producttype) {
+            $producttype->is_deleted = 1;
+            $producttype->save();
 
-        return [
-            'success' => 1,
-            'results' => $product_type
-        ];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product Type Deleted Successfully!'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Product Not Found!'
+            ]);
+        }
     }
 }
