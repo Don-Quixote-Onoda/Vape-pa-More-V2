@@ -333,8 +333,13 @@
                 </a>
               </li>
 
-              <li class="dropdown-footer">
-                <a class="dropdown-link-item" href="sign-in.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+              <li class="dropdown-link-item">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                  <i class="mdi mdi-logout"></i> Log Out
+              </a>    
+              <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
               </li>
             </ul>
           </li>
