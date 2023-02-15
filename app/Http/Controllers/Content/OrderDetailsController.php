@@ -16,7 +16,7 @@ class OrderDetailsController extends Controller
     public function index()
     {
         return view('admin.order-details.index', [
-            'orderdetails' => OrderDetail::orderBy('id', 'desc')
+            'orderdetails' => OrderDetail::orderBy('order_number', 'desc')
             ->where('is_deleted', 0)
             ->get()
         ]);

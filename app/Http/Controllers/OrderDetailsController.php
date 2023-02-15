@@ -118,11 +118,21 @@ class OrderDetailsController extends Controller
     public function destroy($id)
     {
         $order_detail = OrderDetail::find($id);
-        $order_detail->delete();
+        
+        if($order_detail) {
+            $order_detail->is_deleted = 1;
+            $order_detail->save();
 
-        return [
-            'success' => 1,
-            'result' => $order_detail
-        ];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Order Detail Deleted Successfully!'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Order Detail Not Found!'
+            ]);
+        }
     }
 }

@@ -150,6 +150,22 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = Order::find($id);
+        
+        if($order) {
+            $order->is_deleted = 1;
+            $order->save();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Order Deleted Successfully!'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Order Not Found!'
+            ]);
+        }
     }
 }

@@ -116,11 +116,21 @@ class PaymentsController extends Controller
     public function destroy($id)
     {
         $payment = Payment::find($id);
-        $payment->delete();
+        
+        if($payment) {
+            $payment->is_deleted = 1;
+            $payment->save();
 
-        return [
-            'success' => 1,
-            'result' => $payment
-        ];
+            return response()->json([
+                'status' => 200,
+                'message' => 'Payment Deleted Successfully!'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Payment Not Found!'
+            ]);
+        }
     }
 }

@@ -33,10 +33,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth']], functio
 
     Route::prefix("/product-types")->group(function() {
         Route::get('/', [ContentProductTypesController::class, 'index'])->name('admin-product-types');
-        Route::post('/store', [ContentProductTypesController::class, 'store'])->name('admin-store-product-types');
-        Route::get('/edit/{id}', [ContentProductTypesController::class, 'edit'])->name('admin-edit-product-types');
-        Route::post('/update/{id}', [ContentProductTypesController::class, 'update'])->name('admin-update-product-types');
-        Route::delete('/destroy/{id}', [ContentProductTypesController::class, 'destroy'])->name('admin-destroy-product-types');
     });
 
     Route::prefix("/products")->group(function() {
